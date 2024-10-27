@@ -40,6 +40,21 @@ return {
     end,
   },
   {
+    'lukas-reineke/headlines.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      config = true,
+    },
+  },
+  {
+    'akinsho/org-bullets.nvim',
+    config = function()
+      require('org-bullets').setup {
+        -- stuff can here
+      }
+    end,
+  },
+  {
     -- https://github.com/MeanderingProgrammer/render-markdown.nvim
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
@@ -51,6 +66,27 @@ return {
       heading = { border = true },
       indent = { enabled = true },
     },
+  },
+  {
+    'chipsenkbeil/org-roam.nvim',
+    tag = '0.1.0',
+    dependencies = {
+      {
+        'nvim-orgmode/orgmode',
+        --    tag = "0.3.4",
+      },
+    },
+    config = function()
+      require('org-roam').setup {
+        directory = '~/org_roam_files',
+        -- optional
+        org_files = {
+          '~/orgfiles/**/*',
+          --  "~/some/folder/*.org",
+          --  "~/a/single/org_file.org",
+        },
+      }
+    end,
   },
   {
     'nvim-orgmode/orgmode',

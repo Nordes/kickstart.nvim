@@ -25,6 +25,34 @@ return {
     end,
   },
   {
+    'nvim-orgmode/telescope-orgmode.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'nvim-orgmode/orgmode',
+      'nvim-telescope/telescope.nvim',
+    },
+    config = function()
+      require('telescope').load_extension 'orgmode'
+
+      vim.keymap.set('n', '<leader>r', require('telescope').extensions.orgmode.refile_heading, { desc = '[R]efile heading' })
+      vim.keymap.set('n', '<leader>so', require('telescope').extensions.orgmode.search_headings, { desc = '[S]earch [O]rg-Heading' })
+      vim.keymap.set('n', '<leader>li', require('telescope').extensions.orgmode.insert_link, { desc = '[I]nsert Link' })
+    end,
+  },
+  {
+    -- https://github.com/MeanderingProgrammer/render-markdown.nvim
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {
+      heading = { border = true },
+      indent = { enabled = true },
+    },
+  },
+  {
     'nvim-orgmode/orgmode',
     event = 'VeryLazy',
     ft = { 'org' },

@@ -63,6 +63,13 @@ return {
       require('orgmode').setup {
         org_agenda_files = '~/orgfiles/**/*',
         org_default_notes_file = '~/orgfiles/refile.org',
+        org_capture_templates = {
+          a = {
+            description = 'Agenda item',
+            template = '* %?\nSCHEDULED: %^{Scheduled date}t',
+            target = '~/orgfiles/agenda.org',
+          },
+        },
         mappings = {
           org = {
             org_toggle_checkbox = '<leader>o\\',

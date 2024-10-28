@@ -67,7 +67,25 @@ return {
           a = {
             description = 'Agenda item',
             template = '* %?\nSCHEDULED: %^{Scheduled date}t',
-            target = '~/orgfiles/agenda.org',
+            target = '~/orgfiles/calendar.org',
+            headline = 'one-time',
+          },
+          e = {
+            description = 'Event',
+            subtemplates = {
+              r = {
+                description = 'recurring',
+                template = '** %?\n %T',
+                target = '~/orgfiles/calendar.org',
+                headline = 'recurring',
+              },
+              o = {
+                description = 'one-time',
+                template = '** %?\n %T',
+                target = '~/orgfiles/calendar.org',
+                headline = 'one-time',
+              },
+            },
           },
         },
         mappings = {

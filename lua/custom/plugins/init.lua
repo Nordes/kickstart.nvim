@@ -4,27 +4,6 @@
 -- See the kickstart.nvim README for more information
 return {
   {
-    -- https://github.com/toppair/peek.nvim
-    'toppair/peek.nvim',
-    event = { 'VeryLazy' },
-    build = 'deno task --quiet build:fast',
-    config = function()
-      require('peek').setup {
-        app = 'Microsoft Edge', -- 'webview' | 'browser' | etc.
-        theme = 'light', -- dark | light
-      }
-      vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
-      vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
-      if vim.bo.filetype == 'markdown' then
-        require('which-key').add {
-          { '<leader>p', group = '[p]eek (Markdown)' },
-        }
-        vim.keymap.set('n', '<leader>po', require('peek').open, { desc = 'Peek [o]pen' })
-        vim.keymap.set('n', '<leader>pc', require('peek').close, { desc = 'Peek [c]lose' })
-      end
-    end,
-  },
-  {
     'nvim-orgmode/telescope-orgmode.nvim',
     event = 'VeryLazy',
     dependencies = {
@@ -53,19 +32,6 @@ return {
         -- stuff can here
       }
     end,
-  },
-  {
-    -- https://github.com/MeanderingProgrammer/render-markdown.nvim
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
-    opts = {
-      heading = { border = true },
-      indent = { enabled = true },
-    },
   },
   {
     'chipsenkbeil/org-roam.nvim',

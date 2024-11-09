@@ -60,6 +60,11 @@ return {
         org_agenda_files = '~/orgfiles/**/*',
         org_default_notes_file = '~/orgfiles/refile.org',
         org_capture_templates = {
+          c = {
+            description = 'TODO item',
+            template = '* TODO %^{Todo}\n %T\n %?',
+            target = '~/orgfiles/todos.org',
+          },
           a = {
             description = 'Agenda item',
             template = '* %?\nSCHEDULED: %^{Scheduled date}t',
